@@ -1,0 +1,48 @@
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
+pkgname=calinix-desktop-git
+_pkgname=calinix-desktop-git
+pkgver=1.r47.ddcfadc
+pkgrel=1
+epoch=
+pkgdesc="The default desktop UI configuration for CalinixOS for awesomeWM."
+arch=('x86_64')
+url="https://www.github.com/Calinix-Team/calinix-desktop-git.git"
+license=('GPL3')
+groups=()
+depends=(
+'awesome-git'
+'picom-git'
+'rofi'
+'xfce4-power-manager'
+'feh'
+'network-manager-applet'
+'xorg-xinput'
+'iw'
+'upower'
+)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(calinix-desktop-git)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${pkgname}.install
+changelog=
+source=("git+$url")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+	cd "${_pkgname}"
+    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd calinix-desktop-git
+    cp -r etc/skel/.config/* ${pkgdir}/etc/skel/.config/
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
