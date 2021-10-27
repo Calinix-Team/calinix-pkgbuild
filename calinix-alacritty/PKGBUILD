@@ -1,6 +1,9 @@
 # Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
 pkgname=calinix-alacritty-git
 _pkgname=calinix-alacritty-git
+_destname="/etc/skel/.config/alacritty/"
+_licensedir="/usr/share/licenses/${_pkgname}/"
+_readmedir="/usr/share/doc/${_pkgname}/"
 pkgver=1.r47.ddcfadc
 pkgrel=1
 epoch=
@@ -31,8 +34,11 @@ pkgver() {
 }
 
 package() {
-    cd calinix-alacritty-git
-    install -Dm755 etc/skel/.config/alacritty/alacritty.yml ${pkgdir}/etc/skel/.config/alacritty/alacritty.yml
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -dm755 ${pkgdir}${_destname}
+	cp -r  ${srcdir}/${_pkgname}${_destname}alacritty.yml ${pkgdir}${_destname}
+
+    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+    install -dm755 ${pkgdir}${_readmedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+    install -Dm644 ${srcdir}/${_pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
