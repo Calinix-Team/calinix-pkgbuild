@@ -1,0 +1,49 @@
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
+pkgname=iris-bin
+_pkgname=iris-bin
+_destname="/usr/bin/"
+_licensedir="/usr/share/licenses/${_pkgname}/"
+_readmedir="/usr/share/doc/${_pkgname}/"
+pkgver=2.0.0
+pkgrel=1
+epoch=
+pkgdesc="Iris is an easy to use, cross platform and customizable wallpaper manager."
+arch=('x86_64')
+url="https://www.github.com/Shravan-1908/iris.git"
+license=('GPL3')
+groups=()
+depends=(feh)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(calinix-rofi-git)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${pkgname}.install
+changelog=
+source_x86_64=("iris::https://github.com/Shravan-1908/iris/releases/download/v0.2.0/iris-linux-amd64"
+               "https://raw.githubusercontent.com/Shravan-1908/iris/main/LICENSE.txt"
+               "https://raw.githubusercontent.com/Shravan-1908/iris/main/README.md"
+              )
+noextract=("iris")
+sha256sums_x86_64=('c13d2ab201972ef65630c4d240972b0333f5cb140d117db11427aa889f1fc483'
+                   'efbe6d24b7d99e06ba60cfd385f5e9e8fe0dccfb6ccb483edeb70af2ec1dd1cc'
+                   'b8913a9b96a7cbf37fb3d11facbee7bdb25b8368ecf612bc3dd1b7bfe4ba56e4')
+validpgpkeys=()
+
+# pkgver() {
+# 	# cd "${_pkgname}"
+#     # printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
+
+package() {
+    install -dm755 ${pkgdir}${_destname}
+    install -Dm755 "${srcdir}/iris" "${pkgdir}${_destname}iris"
+
+    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+    install -dm755 ${pkgdir}${_readmedir}${_pkgname}
+	install -m644  ${srcdir}/LICENSE.txt ${pkgdir}${_licensedir}${_pkgname}
+    install -Dm644 ${srcdir}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
