@@ -1,4 +1,4 @@
-# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
 pkgname=calinix-calamares
 _pkgname=calinix-calamares
 _destname="/etc/calamares"
