@@ -1,0 +1,25 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=calinix-calamares
+_pkgname=calinix-calamares
+_destname="/etc/calamares"
+_licensedir="/usr/share/licenses/${_pkgname}/"
+pkgver=0.6
+pkgrel=02
+pkgdesc="Calinix Calamares Installer Configuration"
+arch=('any')
+url="https://github.com/Calinix-Team/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/Calinix-Team/${_pkgname}.git")
+sha256sums=('SKIP')
+install=${pkgname}.install
+package() {
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
+}
