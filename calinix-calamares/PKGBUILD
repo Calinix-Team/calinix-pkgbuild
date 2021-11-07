@@ -3,8 +3,9 @@ pkgname=calinix-calamares
 _pkgname=calinix-calamares
 _destname="/etc/calamares"
 _licensedir="/usr/share/licenses/${_pkgname}/"
-pkgver=0.6
-pkgrel=02
+_moduledir="/usr/lib/calamares/modules/services-systemd"
+pkgver=0.7
+pkgrel=3
 pkgdesc="Calinix Calamares Installer Configuration"
 arch=('any')
 url="https://github.com/Calinix-Team/${_pkgname}"
@@ -22,4 +23,8 @@ package() {
 	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
 	mkdir -p "${pkgdir}${_destname}"
 	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
+	install -dm755 ${pkgdir}${_moduledir}
+	cp -r  ${srcdir}/${_pkgname}/services-systemd/* ${pkgdir}${_moduledir}
+	install -dm755 ${pkgdir}$/usr/share/applications/
+	cp ${srcdir}/${_pkgname}/data/calamares.desktop ${pkgdir}$/usr/share/applications/calamares.desktop
 }
