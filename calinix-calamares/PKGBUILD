@@ -24,7 +24,7 @@ package() {
 	mkdir -p "${pkgdir}${_destname}"
 	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
 	install -dm755 ${pkgdir}${_moduledir}
-	cp -r  ${srcdir}/${_pkgname}/services-systemd/* ${pkgdir}${_moduledir}
+	cp -r  ${srcdir}/${_pkgname}/data/services-systemd/* ${pkgdir}${_moduledir}
 	install -dm755 ${pkgdir}$/usr/share/applications/
 	cp ${srcdir}/${_pkgname}/data/calamares.desktop ${pkgdir}$/usr/share/applications/calamares.desktop
 }
