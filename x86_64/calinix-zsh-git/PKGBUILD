@@ -1,32 +1,22 @@
 # Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
-pkgname=calinix-desktop-git
-_pkgname=calinix-desktop-git
-_destname="/etc/skel/.config/awesome/"
+pkgname=calinix-zsh-git
+_pkgname=calinix-zsh-git
+_destname="/etc/skel/"
 _licensedir="/usr/share/licenses/${_pkgname}/"
 _readmedir="/usr/share/doc/${_pkgname}/"
 pkgver=1.r47.ddcfadc
 pkgrel=1
 epoch=
-pkgdesc="The default desktop UI configuration for CalinixOS for awesomeWM."
+pkgdesc="The default zsh configuration for CalinixOS."
 arch=('x86_64')
-url="https://www.github.com/Calinix-Team/calinix-desktop-git.git"
+url="https://www.github.com/Calinix-Team/calinix-zsh-git.git"
 license=('GPL3')
 groups=()
-depends=(
-'awesome-git'
-'picom-git'
-'rofi'
-'xfce4-power-manager'
-'feh'
-'network-manager-applet'
-'xorg-xinput'
-'iw'
-'upower'
-)
+depends=(zsh)
 makedepends=(git)
 checkdepends=()
 optdepends=()
-provides=(calinix-desktop-git)
+provides=(calinix-zsh)
 conflicts=()
 replaces=()
 backup=()
@@ -45,7 +35,7 @@ pkgver() {
 
 package() {
     install -dm755 ${pkgdir}${_destname}
-	cp -r  ${srcdir}/${_pkgname}${_destname}* ${pkgdir}${_destname}
+	cp -r  ${srcdir}/${_pkgname}${_destname}.zshrc ${pkgdir}${_destname}
 
     install -dm755 ${pkgdir}${_licensedir}${_pkgname}
     install -dm755 ${pkgdir}${_readmedir}${_pkgname}

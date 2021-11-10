@@ -28,7 +28,7 @@ source_x86_64=("iris::https://github.com/arghyagod-coder/iris/releases/download/
                "https://raw.githubusercontent.com/Shravan-1908/iris/main/README.md"
               )
 noextract=("iris")
-sha256sums_x86_64=('c13d2ab201972ef65630c4d240972b0333f5cb140d117db11427aa889f1fc483'
+sha256sums_x86_64=('dc379af62d451986f0e92963b9bab663aad20c9d4ff79fcc8549e56356073c3a'
                    'efbe6d24b7d99e06ba60cfd385f5e9e8fe0dccfb6ccb483edeb70af2ec1dd1cc'
                    'b8913a9b96a7cbf37fb3d11facbee7bdb25b8368ecf612bc3dd1b7bfe4ba56e4')
 validpgpkeys=()
