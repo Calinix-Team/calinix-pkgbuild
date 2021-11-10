@@ -13,7 +13,7 @@ for D in $test_dir/*; do
         makepkg -s
         if [ *tar.zst ]; then
             mv *tar.zst $out_dir/
-            tput setaf 1; echo "Package has been built successfully and moved to ./built folder"
+            tput setaf 2; echo "Package has been built successfully and moved to ./built folder"
         else
             echo -e "${RED} ERROR: Package was not built"
         fi

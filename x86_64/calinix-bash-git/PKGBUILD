@@ -34,6 +34,9 @@ pkgver() {
 }
 
 package() {
+    if [ test -f ${pkgdir}/etc/skel/.bashrc ]; then
+        mv {$pkgdir}/etc/skel/.bashrc {$pkgdir}/etc/skel/.bashrc.backup
+    fi
     install -dm755 ${pkgdir}${_destname}
 	cp -r  ${srcdir}/${_pkgname}${_destname}/.bashrc ${pkgdir}${_destname}
 
