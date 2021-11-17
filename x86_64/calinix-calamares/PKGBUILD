@@ -26,7 +26,7 @@ package() {
 	install -dm755 ${pkgdir}${_moduledir}
 	cp -r  ${srcdir}/${_pkgname}/data/services-systemd/* ${pkgdir}${_moduledir}
 	install -dm755 ${pkgdir}$/usr/share/applications/
-	install -Dm755 ${srcdir}/${_pkgname}/data/calamares.desktop ${pkgdir}$/usr/share/applications/calamares.desktop
+	install -Dm755 "${srcdir}/${_pkgname}/data/calamares.desktop" "${pkgdir}$/usr/share/applications/"
 	install -dm755 ${pkgdir}/usr/bin
 	install -Dm755 "${srcdir}/${_pkgname}/data/calamares_polkit" "${pkgdir}/usr/bin/"
 }
