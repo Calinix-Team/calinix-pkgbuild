@@ -35,6 +35,7 @@ pkgver() {
 
 package() {
     install -dm755 ${pkgdir}${_destname}
+    chmod +x ${srcdir}/${_pkgname}${_destname}*
 	cp -r  ${srcdir}/${_pkgname}${_destname}* ${pkgdir}${_destname}
 
     install -dm755 ${pkgdir}${_licensedir}${_pkgname}
