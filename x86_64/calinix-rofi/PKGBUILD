@@ -2,6 +2,8 @@
 pkgname=calinix-rofi-git
 _pkgname=calinix-rofi-git
 _destname="/etc/skel/.config/rofi/"
+_bindir="/etc/skel/.config/rofi/bin/"
+_bindir2="/usr/bin/"
 _licensedir="/usr/share/licenses/${_pkgname}/"
 _readmedir="/usr/share/doc/${_pkgname}/"
 pkgver=1.r47.ddcfadc
@@ -37,6 +39,10 @@ package() {
     install -dm755 ${pkgdir}${_destname}
     chmod +x ${srcdir}/${_pkgname}${_destname}*
 	cp -r  ${srcdir}/${_pkgname}${_destname}* ${pkgdir}${_destname}
+
+    install -dm755 ${pkgdir}${_bindir2}
+    chmod +x ${srcdir}/${_pkgname}${_bindir}*
+	cp -r  ${srcdir}/${_pkgname}${_bindir}* ${pkgdir}${_bindir2}
 
     install -dm755 ${pkgdir}${_licensedir}${_pkgname}
     install -dm755 ${pkgdir}${_readmedir}${_pkgname}
