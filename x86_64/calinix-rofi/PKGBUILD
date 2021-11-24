@@ -6,6 +6,7 @@ _bindir="/etc/skel/.config/rofi/bin/"
 _bindir2="/usr/bin/"
 _licensedir="/usr/share/licenses/${_pkgname}/"
 _readmedir="/usr/share/doc/${_pkgname}/"
+_FONT_DIR="/usr/share/fonts/"
 pkgver=1.r47.ddcfadc
 pkgrel=1
 epoch=
@@ -44,6 +45,9 @@ package() {
     chmod +x ${srcdir}/${_pkgname}${_bindir}*
 	cp -r  ${srcdir}/${_pkgname}${_bindir}* ${pkgdir}${_bindir2}
 
+    install -dm755 ${pkgdir}${_FONT_DIR}
+    cp -r  ${srcdir}/${_pkgname}/fonts/* ${pkgdir}${_FONT_DIR}
+    
     install -dm755 ${pkgdir}${_licensedir}${_pkgname}
     install -dm755 ${pkgdir}${_readmedir}${_pkgname}
 	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
