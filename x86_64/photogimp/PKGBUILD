@@ -1,0 +1,45 @@
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
+pkgname=photogimp-git
+_pkgname=PhotoGIMP
+_target="/.var/app/org.gimp.GIMP/config/GIMP"
+_destname="/etc/skel/.config/GIMP/"
+_licensedir="/usr/share/licenses/${_pkgname}/"
+_readmedir="/usr/share/doc/${_pkgname}/"
+pkgver=1.r47.ddcfadc
+pkgrel=1
+epoch=
+pkgdesc="GIMP that works and looks like Adobe Photoshop for the Photoshop Users"
+arch=('any')
+url="https://github.com/Diolinux/PhotoGIMP.git"
+license=('GPL3')
+groups=()
+depends=(gimp)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(photogimp)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${_pkgname}.install
+changelog=
+source=("git+$url")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+	cd "${_pkgname}"
+    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    install -dm755 ${pkgdir}${_destname}
+	cp -r  ${srcdir}/${_pkgname}${_target}/* ${pkgdir}${_destname}
+
+    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+    install -dm755 ${pkgdir}${_readmedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+    install -Dm644 ${srcdir}/${_pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
