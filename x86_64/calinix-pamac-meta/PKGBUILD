@@ -1,0 +1,36 @@
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
+pkgname=calinix-pamac-meta
+pkgver=20.8
+pkgrel=1
+epoch=
+pkgdesc="Meta package for Pamac in calinixOS"
+arch=('any')
+url="https://calinix-team.github.io"
+license=('GPL3')
+groups=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+depends=(
+'steam'
+'lib32-libvdpau'
+'lib32-libva'
+'lib32-nvidia-utils'
+'lib32-libxtst'
+'lib32-libxrandr'
+'lib32-libpulse'
+'lib32-gdk-pixbuf2'
+'lib32-gtk2'
+'lib32-openal'
+'lib32-mesa'
+'lib32-gcc-libs'
+'lib32-libx11'
+'lib32-libxss'
+'lib32-alsa-plugins'
+'lsof'
+'lib32-libgpg-error'
+'lib32-libindicator-gtk2'
+'lib32-libdbusmenu-glib'
+'lib32-libdbusmenu-gtk2'
+'lib32-nss'
+'ttf-ms-fonts'
+'proton-ge-custom-bin')

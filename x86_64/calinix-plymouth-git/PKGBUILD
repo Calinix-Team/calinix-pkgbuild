@@ -2,7 +2,6 @@
 pkgname=calinix-plymouth-git
 _pkgname=calinix-plymouth-git
 _destname="/usr/share/plymouth/themes/"
-_confdir="/etc/plymouth/"
 _licensedir="/usr/share/licenses/${_pkgname}/"
 _readmedir="/usr/share/doc/${_pkgname}/"
 pkgver=1.r47.ddcfadc
@@ -37,9 +36,6 @@ pkgver() {
 package() {
     install -dm755 ${pkgdir}${_destname}
 	cp -r  ${srcdir}/${_pkgname}${_destname}* ${pkgdir}${_destname}
-
-    install -dm755 ${pkgdir}${_confdir}
-	cp -r  ${srcdir}/${_pkgname}${_confdir}* ${pkgdir}${_confdir}
 
     install -dm755 ${pkgdir}${_licensedir}${_pkgname}
     install -dm755 ${pkgdir}${_readmedir}${_pkgname}

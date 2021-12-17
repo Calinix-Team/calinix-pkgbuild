@@ -18,7 +18,6 @@ optdepends=('ttf-dejavu: For true type font support'
         'cantarell-fonts: True Type support for BGRT theme')
 provides=('plymouth')
 conflicts=('plymouth' 'plymouth-legacy' 'plymouth-nosystemd')
-backup=('etc/plymouth/plymouthd.conf')
 
 options=('!libtool' '!emptydirs')
 
@@ -37,7 +36,6 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
        'sd-plymouth.initcpio_install'
        'plymouth-quit.service.in.patch'
        'plymouth-update-initrd.patch'
-       'plymouthd.conf.patch'
 )
 
 sha256sums=('SKIP'
@@ -66,7 +64,6 @@ prepare() {
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
 # Does not actually seem needed???	
 #	patch -p1 -i $srcdir/plymouth-start.service.in.patch
-	patch -p1 -i $srcdir/plymouthd.conf.patch
 }
 
 build() {
