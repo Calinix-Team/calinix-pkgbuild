@@ -1,0 +1,31 @@
+# Maintainer: Arghya Sarkar <arghyasarkar.nolan@gmail.com>
+pkgname=neofetch
+pkgver=3.3.0
+pkgrel=1
+pkgdesc="Calinix Fork of Neofetch, a system information tool to display system information in a terminal."
+arch=('any')
+url="https://github.com/Calinix-Team/${pkgname}"
+license=('MIT')
+depends=('bash' "git")
+optdepends=(
+  'feh: Wallpaper Display'
+  'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
+  'nitrogen: Wallpaper Display'
+  'w3m: Display Images'
+  'catimg: Display Images'
+  'jp2a: Display Images'
+  'libcaca: Display Images'
+  'xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
+  'xorg-xdpyinfo: Resolution detection (Single Monitor)'
+  'xorg-xprop: Desktop Environment and Window Manager'
+  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
+)
+source=(git+${url})
+md5sums=('SKIP')
+
+package() {
+  cd "${srcdir}/${pkgname}/"
+  make DESTDIR="$pkgdir" install
+  install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+}
